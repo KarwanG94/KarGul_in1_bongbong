@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -9,9 +9,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Fragment>
     <App />
-  </React.StrictMode>,
+  </Fragment>,
   document.getElementById('root')
 );
 

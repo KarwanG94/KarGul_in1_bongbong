@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardTitle, CardText, CardActions, Button } from 'react-mdl';
+import { Card, CardText, CardActions, Button } from 'react-mdl';
 
 
  class UserTable extends Component {
@@ -36,18 +36,14 @@ import { Card, CardTitle, CardText, CardActions, Button } from 'react-mdl';
 
       return response.json();
     }).then((result) => {
-      console.log(result);
       
       this.setState({
         userObj: result
       })
-      console.log(this.state.userObj);
     })
   }
 
-  postUserApi = () => {
-    console.log(this.state.userObj);
-    
+  postUserApi = () => {    
     
     return fetch(this.BASE_URL + '/api/users/', {
       method: 'POST',
@@ -58,9 +54,7 @@ import { Card, CardTitle, CardText, CardActions, Button } from 'react-mdl';
     })
     .then(response => response.json())
       .then((json) => {
-          this.fetchUserFromAPI();
-          console.log(this.state.newUser);
-          
+          this.fetchUserFromAPI();          
       })
   }
 
@@ -71,64 +65,7 @@ import { Card, CardTitle, CardText, CardActions, Button } from 'react-mdl';
         
       return response.json();
     }).then((result) => {
-      console.log(result);
       this.fetchUserFromAPI();
-    })
-  }
-
-  createCard = () => {    
-    return this.state.userObj.map((user) => {
-      return(
-        <div className="grid-item">
-        <Card key={user._id} shadow={0} style={{width: '50%', height: '320px', margin: 'auto'}}>
-            <CardText>
-            <b>ID:</b>{user._id} <br />
-            </CardText>
-            
-            <CardText>
-            <b>Name:</b>{user.name} <br />
-            </CardText>
-            
-            <CardText>
-            <b>Username:</b>{user.username} <br />
-            </CardText>
-            
-            <CardText>
-            <b>Email:</b>{user.email} <br />
-            </CardText>
-            
-            <CardText>
-            <b>City:</b>{user.address.city} <br />
-            </CardText>
-            
-            <CardText>
-            <b>Street:</b>{user.address.street} <br />
-            </CardText>
-            
-            <CardText>
-            <b>Zip:</b>{user.address.zipcode} <br />
-            </CardText>
-            
-            <CardActions border>
-                <Button onClick={() => {this.deleteUserApi(user._id)}} colored>Delete</Button>
-            </CardActions>
-        </Card>
-        </div>
-      )
-      
-      // return <div className="userCard" key={user._id}>
-      //           <b>ID:</b>{user._id} <br />
-      //           <b>Name:</b>{user.name}<br />
-      //           <b>Username:</b>{user.username}<br />
-      //           <b>Email:</b>{user.email}<br />
-      //           <b>Address</b> <br />
-      //           <b>City:</b>{user.address.city}<br />
-      //           <b>Street:</b>{user.address.street}<br />
-      //           <b>Zip:</b>{user.address.zipcode}<br />
-
-      //           <i onClick={() => {this.deleteUserApi(user._id)}} className="fa fa-trash"></i>
-
-      //        </div>
     })
   }
 
@@ -199,6 +136,48 @@ handleInputZip = (event) => {
     e.preventDefault();
     console.log('added');
     this.postUserApi();
+  }
+
+  createCard = () => {    
+    return this.state.userObj.map((user) => {
+      return(
+        <div className="grid-item"  key={user._id}>
+          <Card shadow={0} style={{width: '50%', height: '320px', margin: 'auto'}}>
+              <CardText>
+              <b>ID:</b>{user._id} <br />
+              </CardText>
+              
+              <CardText>
+              <b>Name:</b>{user.name} <br />
+              </CardText>
+              
+              <CardText>
+              <b>Username:</b>{user.username} <br />
+              </CardText>
+              
+              <CardText>
+              <b>Email:</b>{user.email} <br />
+              </CardText>
+              
+              <CardText>
+              <b>City:</b>{user.address.city} <br />
+              </CardText>
+              
+              <CardText>
+              <b>Street:</b>{user.address.street} <br />
+              </CardText>
+              
+              <CardText>
+              <b>Zip:</b>{user.address.zipcode} <br />
+              </CardText>
+              
+              <CardActions border>
+                  <Button onClick={() => {this.deleteUserApi(user._id)}} colored>Delete</Button>
+              </CardActions>
+          </Card>
+        </div>
+      )
+    })
   }
 
   render() {        
