@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { Card, CardText, CardActions, Button } from 'react-mdl';
 
+/**
+ * @description - Component that handles api requests, Fetches users
+ * Posting new ones and also delete current (already created users)
+ * Im using react mdl as a library for my "card"
+ * @author - Karwan Gulnezer
+ */
 
  class UserTable extends Component {
   constructor(props){
@@ -27,6 +33,12 @@ import { Card, CardText, CardActions, Button } from 'react-mdl';
   componentDidMount(){
     this.fetchUserFromAPI();
   }
+
+/**
+ * MY fetches/api requests,
+ * GET, POST & DELETE.
+ * my local api is in localhost with port 3001, im using it as my BASE_URL
+ */
 
   BASE_URL = 'http://localhost:3001';
 
