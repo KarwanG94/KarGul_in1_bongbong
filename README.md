@@ -48,4 +48,12 @@ Path - /users?username=something || om path har "?" så kallas det för <b>Query
 
 ## På vilka tre sätt kan man skicka in parametrar i en HTTP-request? Ge exempel med curl.
 
-genom query, path, och body
+### Svar:
+
+Genom Query, Path, och Body
+Exempel:
+```
+curl -H "Content-Type:application/json" "localhost:3001/users?keyWithoutValue&keyWithValue=value" -H "some: header" | jq
+
+curl -X DELETE 'http://localhost:3001/locations?id=3'
+```
