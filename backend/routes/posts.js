@@ -10,7 +10,7 @@ getPosts = (req, res) => {
   
 postPosts = (req, res) => {
   response={ 
-    "body": "string",
+    "body": req.body,
     "title": "string",
     "userId": req.params.postId
   }

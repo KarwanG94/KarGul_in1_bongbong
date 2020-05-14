@@ -7,6 +7,27 @@ När du skriver en URL i en webbläsare (eller klickar på en länk) sänder web
 querystring. Kombinationen av method, path och querystring är vad din app
 använder för att avgöra responden.
 
+Response code- indikerar om en specifik HTTP-begäran har slutförts, En respons kan man få på olika sätt.
+5 Olika kategorier
+1 Informational
+2 success (200 OK, 201 Created, 204 No change)
+3 redirection (301 Moved Permanently, 304 Not modified)
+4 client errors (400 bad request, 401 unathorized, 403 forbidden, 404 not found)
+5 server errors (500 internal error, 502 bad gateway, 503 service unavailable)
+
+#### exempel:
+Lyckad: 
+```
+200 ok
+``` 
+När jag lyckas komma in på https://nxt.smp.se/ 
+
+Body är själva webbsidans struktur
+```
+exempel: <html>......</html>
+``` 
+
+
 ## Beskriv HTTP-protokollets vanligaste metoder och vad de gör.
 
 ### Svar:
@@ -46,14 +67,32 @@ Path - /users?username=something || om path har "?" så kallas det för <b>Query
 
 
 
-## På vilka tre sätt kan man skicka in parametrar i en HTTP-request? Ge exempel med curl.
+## På vilka tre sätt kan man skicka in parametrar i en HTTP-request? Ge exempel med varje typ av parameter med curl, beskriv vilken typ av parameter som skickas in och värdet av parametern i respektive exempel.
 
 ### Svar:
 
-Genom Query, Path, och Body
-Exempel:
+Genom Header, Path, och Query
+#### Exempel:
+
+Med Header:
 ```
 curl -H "Content-Type:application/json" "localhost:3001/users?keyWithoutValue&keyWithValue=value" -H "some: header" | jq
 
+Header i detta exempel: --> Content-type:application/json
+```
+
+Med Path:
+
+```
+curl -H "Content-Type:application/json" "localhost:3001/api/users
+
+Där /api/users är vår path
+
+```
+
+Med Query
+```
 curl -X DELETE 'http://localhost:3001/locations?id=3'
+
+Där vi har queryparameter som är id 3
 ```
