@@ -1,18 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const users = require('./users.js');
+const students = require('./students.js');
 const posts = require('./posts.js');
 const main = require('./main.js');
 
 router.get("/", main.welcome);
 
-router.get("/users", users.getUsers);
-router.get("/users/:id", users.getById);
-router.post("/users", users.postUser);
-router.delete("/users/:id", users.deleteById);
-router.put("/users/:id", users.putUser);
-router.patch("/users/:id", users.patchUser);
+router.get("/students", students.getStudents);
+router.get("/students/:id", students.getById);
+router.post("/students", students.postStudent);
+router.delete("/students/:id", students.deleteById);
+router.put("/students/:id", students.putStudent);
+router.patch("/students/:id", students.patchStudent);
 
 router.get("/posts", posts.getPosts);
 router.get("/posts/:postsId", posts.getPosts);

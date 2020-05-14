@@ -7,7 +7,7 @@ var cors = require('cors')
 
 app.use(cors())
 
-// environment variable PORT or 3000 if unset
+// environment variable PORT or 3001 if unset
 const port = process.env.PORT || 3001;
 
 app.use(express.json())

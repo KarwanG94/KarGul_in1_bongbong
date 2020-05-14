@@ -1,25 +1,25 @@
 # KarGu_-vning2_api
 # Intro:
 **localhost:3001** <br>
-An API that implements my custom made requests of users endpoints, backed by a mongo database.
+An API that implements my custom made requests of students endpoints, backed by a mongo database.
 
 The purpose for this API is educational and meant as a test to see if you understand and can implement your own API.
 
-# Users
+# Student
 ### The HTTP Methods supported are:
 - GET
 - POST
-- PUT - Must have specific user Id
+- PUT - Must have specific student Id
 
 ### Paths should look like this:
-/users - List of users <br>
-/users/{userId} - Gets a specific user with users Id
+/students - List of students <br>
+/students/{studentId} - Gets a specific student with students Id
 
 -------------------------------------------------------------------
 ### Method: GET 
 #### Example 1:
 ```
-curl -i -H "Content-Type:application/json" localhost:3001/api/users/
+curl -i -H "Content-Type:application/json" localhost:3001/api/students/
 ```
 Gets the information from the specified URI.
 
@@ -32,7 +32,7 @@ response: 200
 
 #### Example 2 with jq:
 ```
-curl -H "Content-Type:application/json" localhost:3001/api/users/ | jq .<br>
+curl -H "Content-Type:application/json" localhost:3001/api/students/ | jq .<br>
 ```
 
 ```json
@@ -49,7 +49,7 @@ Gets the information in the specified URI and displays it in JSON format.
 
 ### With Parameters:
 ```
-curl -H "Content-Type:application/json" "localhost:3000/users?keyWithoutValue&keyWithShit=value" -H "some: header" | jq
+curl -H "Content-Type:application/json" "localhost:3000/students?keyWithoutValue&keyWithShit=value" -H "some: header" | jq
 ```
 #### result with jq 
 
@@ -66,10 +66,10 @@ curl -H "Content-Type:application/json" "localhost:3000/users?keyWithoutValue&ke
 ```
 -------------------------------------------------------------------
 
-### /users
+### /students
 #### Method: POST
 
-#### /users
+#### /students
 ### Method: POST
 Description: Create a user
 #### Headers:
@@ -88,7 +88,7 @@ Description: Create a user
 ```
 
 ##### Example:
-curl -i -X POST -H "Content-Type:application/json" localhost:3001/api/users -d '{
+curl -i -X POST -H "Content-Type:application/json" localhost:3001/api/students -d '{
   "name": "sauroman Assface",
   "username": "Lokiman",
   "email": "bitbucket66@hore.com",
@@ -113,9 +113,9 @@ Result:
 ```
 ##### 201 Created
 -------------------------------------------------------------------
-#### /users/{userId}
+#### /students/{studentId}
 ### Method: PUT
-Description: Replace a user
+Description: Replace a student
 #### Headers:
 ```"Content-Type: application/json"```
 
@@ -132,7 +132,7 @@ Description: Replace a user
 
 ```
 ##### Example:
-curl -i -X PUT -H "Content-Type:application/json" localhost:3000/users/1 -d '{
+curl -i -X PUT -H "Content-Type:application/json" localhost:3000/students/1 -d '{
   "_id": "5e806d9f42fbde006b6b9ec5",
   "id": 1,
   "name": "Frodo Baggins",
@@ -159,7 +159,7 @@ Result:
 
 #### Example
 
-curl -i -X DELETE -H "Content-Type:application/json" localhost:3001/api/users/{the uniq ID}
+curl -i -X DELETE -H "Content-Type:application/json" localhost:3001/api/students/{the uniq ID}
 5eba42e91daba71d456ff7f5
 ##### Resul:
 ```
@@ -227,19 +227,19 @@ Posts the information you give to the Object
 
 **The result will look like this:**<br>
 ```
-{"body":"Fresh as morning dew","title":"Hi, World","userId":1,"id":811,"__v":0}
+{"body":"Fresh as morning dew","title":"Hi, World","studentId":1,"id":811,"__v":0}
 ```
 
 #### Example 2 with jq:
 ```
-curl -X POST -H "Content-Type:application/json" localhost:3000/posts -d '{"title":"Hi, World", "body":"Fresh as morning dew", "userId": "1"}' | jq
+curl -X POST -H "Content-Type:application/json" localhost:3000/posts -d '{"title":"Hi, World", "body":"Fresh as morning dew", "studentId": "1"}' | jq
 ```
 
 ```json
  {
   "title": "Hi",
   "body": "Fresh as morning dew",
-  "userId": 1
+  "studentId": 1
 }
 ```
 -------------------------------------------------------------------
@@ -247,7 +247,7 @@ curl -X POST -H "Content-Type:application/json" localhost:3000/posts -d '{"title
 #### Example 1<br>
 ```
 curl -i -X PUT localhost:3001/api/posts/3 -H "Content-Type:application/json" -d  '{
-  "body": "NewBody", "title": "NewTitle", "userId": "1337"}'
+  "body": "NewBody", "title": "NewTitle", "studentId": "1337"}'
 ```
 
   Replaces the information on the specified path, with the provided data
@@ -258,19 +258,19 @@ Status: 200 OK
 ```
 Returns body with the old information, should look like this
 ```
-{"_id":"5e9ed8353c9c34a2d807f465","id":3,"__v":0,"body":"OldBody","title":"OldTitle","userId":13}
+{"_id":"5e9ed8353c9c34a2d807f465","id":3,"__v":0,"body":"OldBody","title":"OldTitle","studentId":13}
 ```
 
 With jq:
 #### Example with jq
 ```
-curl -X PUT localhost:3001/api/posts/1 -H "Content-Type:application/json" -d  '{"body": "NewBody", "title": "NewTitle", "userId": "1337"}' | jq
+curl -X PUT localhost:3001/api/posts/1 -H "Content-Type:application/json" -d  '{"body": "NewBody", "title": "NewTitle", "studentId": "1337"}' | jq
 ```
 ```json
  {
   "title": "string",
   "body": "string",
-  "userId": 0
+  "studentId": 0
 }
 ```
 
@@ -279,7 +279,7 @@ curl -X PUT localhost:3001/api/posts/1 -H "Content-Type:application/json" -d  '{
 #### Example: <br>
 ```
 curl -i -X PATCH localhost:3001/api/posts/3 -H "Content-Type:application/json" -d  '{
-  "body": "newBody", "userId": "3"}'
+  "body": "newBody", "studentId": "3"}'
 ```
   Updates a part of the object on the specified path, depending on the provided data
 
@@ -290,18 +290,18 @@ Status: 200 OK
 Returns body with the updated information
 
 ```
-{"body": "newBody", "title": "oldTitle", userId": "3"}
+{"body": "newBody", "title": "oldTitle", studentId": "3"}
 ```
 
 #### Example with jq
 ```
-curl -X PATCH localhost:3001/api/posts/3 -H "Content-Type:application/json" -d  '{"body": "newBody", "userId": "3"}' | jq
+curl -X PATCH localhost:3001/api/posts/3 -H "Content-Type:application/json" -d  '{"body": "newBody", "studentId": "3"}' | jq
 ```
 ```json
 {
   "title": "string",
   "body": "string",
-  "userId": 0
+  "studentId": 0
 }
 ```
 -------------------------------------------------------------------

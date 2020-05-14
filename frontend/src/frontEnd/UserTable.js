@@ -43,7 +43,7 @@ import { Card, CardText, CardActions, Button } from 'react-mdl';
   BASE_URL = 'http://localhost:3001';
 
   fetchUserFromAPI = () => {
-    return fetch(this.BASE_URL + '/api/users')
+    return fetch(this.BASE_URL + '/api/students')
     .then(response => {
 
       return response.json();
@@ -57,7 +57,7 @@ import { Card, CardText, CardActions, Button } from 'react-mdl';
 
   postUserApi = () => {    
     
-    return fetch(this.BASE_URL + '/api/users/', {
+    return fetch(this.BASE_URL + '/api/students/', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
@@ -71,7 +71,7 @@ import { Card, CardText, CardActions, Button } from 'react-mdl';
   }
 
   deleteUserApi = userId => {        
-    return fetch(this.BASE_URL + '/api/users/'+userId, {
+    return fetch(this.BASE_URL + '/api/students/'+userId, {
       method: 'DELETE',
     }).then(response => {
         
