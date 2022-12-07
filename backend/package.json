@@ -19,7 +19,7 @@
   "homepage": "https://github.com/KarwanG94/KarGu_-vning2_api#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.12",
     "node-dotify": "^1.0.1"
